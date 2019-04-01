@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Cloud FireStore Opet</string>
+    <string-array name="categorias">
+        <item>Eletrônicos</item>
+        <item>Textil</item>
+        <item>Lar</item>
+        <item>Brinquedos</item>
+        <item>Outros</item>
+    </string-array>
+</resources>
