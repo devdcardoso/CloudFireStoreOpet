@@ -3,10 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CloudFireStoreOpet.iml" filepath="$PROJECT_DIR$/CloudFireStoreOpet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../opet/AndroidStudioProjects/CloudFireStoreOpet/CloudFireStoreOpet.iml" filepath="$PROJECT_DIR$/../../../opet/AndroidStudioProjects/CloudFireStoreOpet/CloudFireStoreOpet.iml" />
+      <module fileurl="file://C:\Users\opet\Documents\Android\CloudFireStoreOpet\CloudFireStoreOpet.iml" filepath="C:\Users\opet\Documents\Android\CloudFireStoreOpet\CloudFireStoreOpet.iml" />
+      <module fileurl="file://C:\Users\opet\opet\AndroidStudioProjects\CloudFireStoreOpet\CloudFireStoreOpet.iml" filepath="C:\Users\opet\opet\AndroidStudioProjects\CloudFireStoreOpet\CloudFireStoreOpet.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../../../opet/AndroidStudioProjects/CloudFireStoreOpet/app/app.iml" filepath="$PROJECT_DIR$/../../../opet/AndroidStudioProjects/CloudFireStoreOpet/app/app.iml" />
+      <module fileurl="file://C:\Users\opet\opet\AndroidStudioProjects\CloudFireStoreOpet\app\app.iml" filepath="C:\Users\opet\opet\AndroidStudioProjects\CloudFireStoreOpet\app\app.iml" />
+      <module fileurl="file://C:\Users\opet\Documents\Android\CloudFireStoreOpet\app\app.iml" filepath="C:\Users\opet\Documents\Android\CloudFireStoreOpet\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/storagefirebase/storagefirebase.iml" filepath="$PROJECT_DIR$/storagefirebase/storagefirebase.iml" />
+      <module fileurl="file://C:\Users\opet\Documents\Android\CloudFireStoreOpet\storagefirebase\storagefirebase.iml" filepath="C:\Users\opet\Documents\Android\CloudFireStoreOpet\storagefirebase\storagefirebase.iml" />
     </modules>
   </component>
 </project>

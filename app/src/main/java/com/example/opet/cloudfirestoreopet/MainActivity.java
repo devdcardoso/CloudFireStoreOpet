@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private Spinner spinnerCategoria;
     private ListView listaProdutos;
     private TextView textTotal;
+
+    private CheckBox checkAtivo;
+
     private FirebaseFirestore db;
     private List<String> produtos;
     @Override
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         produtos = new ArrayList<>();
         textTotal = findViewById(R.id.textTotal);
         editValor = findViewById(R.id.editValor);
+
+        checkAtivo = findViewById(R.id.checkAtivo);
+
         db = FirebaseFirestore.getInstance();
     }
 
@@ -90,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         produto.put("Nome",editNome.getText().toString());
         produto.put("Categoria",spinnerCategoria.getSelectedItem().toString());
         produto.put("Valor",Double.parseDouble(editValor.getText().toString()));
+        produto.put("Ativo",checkAtivo.isChecked());
 
         db.collection("Produtos")
                 .add(produto)
