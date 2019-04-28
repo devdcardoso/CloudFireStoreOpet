@@ -40,8 +40,8 @@ dependencies {
     implementation 'com.zhihu.android:matisse:0.5.2-beta3'
     implementation 'com.google.firebase:firebase-storage:16.0.1'
     implementation 'com.google.firebase:firebase-auth:16.0.3'
+    compile 'com.google.firebase:firebase-firestore:16.0.0'
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
-
 
 }
 apply plugin: 'com.google.gms.google-services'

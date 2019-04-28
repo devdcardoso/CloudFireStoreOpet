@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -21,7 +23,9 @@ import com.tbruyelle.rxpermissions2.RxPermissions;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -32,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView imageSelector;
     private List<Uri> mSelected;
     private StorageReference mStorage;
+    private FirebaseFirestore db;
+    private FirebaseUser mUser;
+    private StorageReference userRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,17 +46,35 @@ public class MainActivity extends AppCompatActivity {
 
         imageSelector = findViewById(R.id.imageSelector);
         mStorage = FirebaseStorage.getInstance().getReference();
+        db = FirebaseFirestore.getInstance();
+        Picasso.get().load(R.drawable.placeholder).into(imageSelector);
+
     }
 
+    @Override
+    protected void onStart(){
+        super.onStart();
+        //Picasso.get().load(R.drawable.placeholder).into(imageSelector);
+    }
 
     public void saveOnFirebase(View view) {
-        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-        StorageReference userRef = mStorage.child("images/"+mUser.getEmail()+"/"+"teste.png");
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
+        userRef = mStorage.child("images/"+mUser.getEmail()+"/"+Util.getTimestamp()+".png");
         userRef.putFile(mSelected.get(0))
         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(MainActivity.this, "UPADO!", Toast.LENGTH_SHORT).show();
+                userRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        CollectionReference colecao = db.collection("users").document(mUser.getEmail()).collection("links");
+                        Map<String,Object> link = new HashMap<>();
+                        link.put("link",uri.toString());
+                        colecao.add(link);
+                        Toast.makeText(MainActivity.this, "Tarefa Executada!", Toast.LENGTH_SHORT).show();
+                        Picasso.get().load(R.drawable.placeholder).into(imageSelector);
+                    }
+                });
             }
         });
     }
@@ -97,4 +122,10 @@ public class MainActivity extends AppCompatActivity {
 
             Picasso.get().load(mSelected.get(0)).into(imageSelector);
         }
-    }}
+    }
+
+    public void openImageList(View view) {
+        Intent novatela = new Intent(MainActivity.this,ListarImagensActivity.class);
+        startActivity(novatela);
+    }
+}
