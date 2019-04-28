@@ -8,6 +8,7 @@ public class Produto {
     private String nome;
     private String categoria;
     private double valor;
+    private boolean ativo;
 
     public Produto() {
     }
@@ -42,10 +43,17 @@ public class Produto {
         this.categoria = categoria;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
     @Override
     public String toString() {
-        return "Produto:\n" +
-                "Nome: " + nome + '\n' +
+        return  "Nome: " + nome + '\n' +
                 "Categoria: " + categoria + '\n' +
                 "Valor: " + valor + '\n';
     }
